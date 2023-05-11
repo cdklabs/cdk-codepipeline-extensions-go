@@ -1,4 +1,3 @@
-// This project is for use in the workshop DOP 401: Get better at building AWS CDK constructs.
 package cdklabscdkcodepipelineextensions
 
 import (
