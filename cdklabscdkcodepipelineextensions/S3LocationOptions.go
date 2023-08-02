@@ -15,6 +15,8 @@ type S3LocationOptions struct {
 	// Experimental.
 	Bucket awss3.IBucket `field:"required" json:"bucket" yaml:"bucket"`
 	// The role used for getting the calendar file.
+	// Default: - A role created by the Custom Resource.
+	//
 	// Experimental.
 	Role awsiam.IRole `field:"optional" json:"role" yaml:"role"`
 }

@@ -28,6 +28,8 @@ type PipelineWithChangeControlProps struct {
 	// Experimental.
 	SourceRepository awscodecommit.IRepository `field:"required" json:"sourceRepository" yaml:"sourceRepository"`
 	// The role used for running the pipeline.
+	// Default: - A new role is created when the pipeline is created.
+	//
 	// Experimental.
 	PipelineRole awsiam.IRole `field:"optional" json:"pipelineRole" yaml:"pipelineRole"`
 }

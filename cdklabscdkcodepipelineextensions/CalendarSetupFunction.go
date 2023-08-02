@@ -652,6 +652,8 @@ func CalendarSetupFunction_MetricAll(metricName *string, props *awscloudwatch.Me
 }
 
 // Metric for the number of concurrent executions across all Lambdas.
+// Default: max over 5 minutes.
+//
 // Experimental.
 func CalendarSetupFunction_MetricAllConcurrentExecutions(props *awscloudwatch.MetricOptions) awscloudwatch.Metric {
 	_init_.Initialize()
@@ -672,6 +674,8 @@ func CalendarSetupFunction_MetricAllConcurrentExecutions(props *awscloudwatch.Me
 }
 
 // Metric for the Duration executing all Lambdas.
+// Default: average over 5 minutes.
+//
 // Experimental.
 func CalendarSetupFunction_MetricAllDuration(props *awscloudwatch.MetricOptions) awscloudwatch.Metric {
 	_init_.Initialize()
@@ -692,6 +696,8 @@ func CalendarSetupFunction_MetricAllDuration(props *awscloudwatch.MetricOptions)
 }
 
 // Metric for the number of Errors executing all Lambdas.
+// Default: sum over 5 minutes.
+//
 // Experimental.
 func CalendarSetupFunction_MetricAllErrors(props *awscloudwatch.MetricOptions) awscloudwatch.Metric {
 	_init_.Initialize()
@@ -712,6 +718,8 @@ func CalendarSetupFunction_MetricAllErrors(props *awscloudwatch.MetricOptions) a
 }
 
 // Metric for the number of invocations of all Lambdas.
+// Default: sum over 5 minutes.
+//
 // Experimental.
 func CalendarSetupFunction_MetricAllInvocations(props *awscloudwatch.MetricOptions) awscloudwatch.Metric {
 	_init_.Initialize()
@@ -732,6 +740,8 @@ func CalendarSetupFunction_MetricAllInvocations(props *awscloudwatch.MetricOptio
 }
 
 // Metric for the number of throttled invocations of all Lambdas.
+// Default: sum over 5 minutes.
+//
 // Experimental.
 func CalendarSetupFunction_MetricAllThrottles(props *awscloudwatch.MetricOptions) awscloudwatch.Metric {
 	_init_.Initialize()
@@ -752,6 +762,8 @@ func CalendarSetupFunction_MetricAllThrottles(props *awscloudwatch.MetricOptions
 }
 
 // Metric for the number of unreserved concurrent executions across all Lambdas.
+// Default: max over 5 minutes.
+//
 // Experimental.
 func CalendarSetupFunction_MetricAllUnreservedConcurrentExecutions(props *awscloudwatch.MetricOptions) awscloudwatch.Metric {
 	_init_.Initialize()
