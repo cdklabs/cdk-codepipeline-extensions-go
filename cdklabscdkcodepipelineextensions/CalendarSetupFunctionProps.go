@@ -41,6 +41,13 @@ type CalendarSetupFunctionProps struct {
 	//
 	// Experimental.
 	RetryAttempts *float64 `field:"optional" json:"retryAttempts" yaml:"retryAttempts"`
+	// Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation.
+	// See: https://aws-otel.github.io/docs/getting-started/lambda
+	//
+	// Default: - No ADOT instrumentation.
+	//
+	// Experimental.
+	AdotInstrumentation *awslambda.AdotInstrumentationConfig `field:"optional" json:"adotInstrumentation" yaml:"adotInstrumentation"`
 	// Whether to allow the Lambda to send all network traffic.
 	//
 	// If set to false, you must individually add traffic rules to allow the
@@ -228,6 +235,11 @@ type CalendarSetupFunctionProps struct {
 	//
 	// Experimental.
 	Role awsiam.IRole `field:"optional" json:"role" yaml:"role"`
+	// Sets the runtime management configuration for a function's version.
+	// Default: Auto.
+	//
+	// Experimental.
+	RuntimeManagementMode awslambda.RuntimeManagementMode `field:"optional" json:"runtimeManagementMode" yaml:"runtimeManagementMode"`
 	// The list of security groups to associate with the Lambda's network interfaces.
 	//
 	// Only used if 'vpc' is supplied.

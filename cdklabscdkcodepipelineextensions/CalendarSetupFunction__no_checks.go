@@ -60,6 +60,10 @@ func (c *jsiiProxy_CalendarSetupFunction) validateGrantInvokeUrlParameters(grant
 	return nil
 }
 
+func (c *jsiiProxy_CalendarSetupFunction) validateInvalidateVersionBasedOnParameters(x *string) error {
+	return nil
+}
+
 func (c *jsiiProxy_CalendarSetupFunction) validateMetricParameters(metricName *string, props *awscloudwatch.MetricOptions) error {
 	return nil
 }

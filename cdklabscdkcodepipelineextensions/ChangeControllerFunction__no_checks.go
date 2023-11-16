@@ -60,6 +60,10 @@ func (c *jsiiProxy_ChangeControllerFunction) validateGrantInvokeUrlParameters(gr
 	return nil
 }
 
+func (c *jsiiProxy_ChangeControllerFunction) validateInvalidateVersionBasedOnParameters(x *string) error {
+	return nil
+}
+
 func (c *jsiiProxy_ChangeControllerFunction) validateMetricParameters(metricName *string, props *awscloudwatch.MetricOptions) error {
 	return nil
 }

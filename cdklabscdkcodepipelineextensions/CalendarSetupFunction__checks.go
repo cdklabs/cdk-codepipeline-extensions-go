@@ -166,6 +166,14 @@ func (c *jsiiProxy_CalendarSetupFunction) validateGrantInvokeUrlParameters(grant
 	return nil
 }
 
+func (c *jsiiProxy_CalendarSetupFunction) validateInvalidateVersionBasedOnParameters(x *string) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (c *jsiiProxy_CalendarSetupFunction) validateMetricParameters(metricName *string, props *awscloudwatch.MetricOptions) error {
 	if metricName == nil {
 		return fmt.Errorf("parameter metricName is required, but nil was provided")
