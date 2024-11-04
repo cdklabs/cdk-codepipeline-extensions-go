@@ -158,6 +158,14 @@ func (c *jsiiProxy_CalendarSetupFunction) validateGrantInvokeParameters(grantee 
 	return nil
 }
 
+func (c *jsiiProxy_CalendarSetupFunction) validateGrantInvokeCompositePrincipalParameters(compositePrincipal awsiam.CompositePrincipal) error {
+	if compositePrincipal == nil {
+		return fmt.Errorf("parameter compositePrincipal is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (c *jsiiProxy_CalendarSetupFunction) validateGrantInvokeUrlParameters(grantee awsiam.IGrantable) error {
 	if grantee == nil {
 		return fmt.Errorf("parameter grantee is required, but nil was provided")

@@ -52,6 +52,9 @@ type CalendarSetupFunctionProps struct {
 	//
 	// If set to false, you must individually add traffic rules to allow the
 	// Lambda to connect to network targets.
+	//
+	// Do not specify this property if the `securityGroups` or `securityGroup` property is set.
+	// Instead, configure `allowAllOutbound` directly on the security group.
 	// Default: true.
 	//
 	// Experimental.
@@ -65,6 +68,11 @@ type CalendarSetupFunctionProps struct {
 	//
 	// Experimental.
 	AllowPublicSubnet *bool `field:"optional" json:"allowPublicSubnet" yaml:"allowPublicSubnet"`
+	// Sets the application log level for the function.
+	// Default: "INFO".
+	//
+	// Experimental.
+	ApplicationLogLevel *string `field:"optional" json:"applicationLogLevel" yaml:"applicationLogLevel"`
 	// The system architectures compatible with this lambda function.
 	// Default: Architecture.X86_64
 	//
@@ -168,11 +176,48 @@ type CalendarSetupFunctionProps struct {
 	//
 	// Experimental.
 	Layers *[]awslambda.ILayerVersion `field:"optional" json:"layers" yaml:"layers"`
+	// Sets the logFormat for the function.
+	// Default: "Text".
+	//
+	// Experimental.
+	LogFormat *string `field:"optional" json:"logFormat" yaml:"logFormat"`
+	// Sets the loggingFormat for the function.
+	// Default: LoggingFormat.TEXT
+	//
+	// Experimental.
+	LoggingFormat awslambda.LoggingFormat `field:"optional" json:"loggingFormat" yaml:"loggingFormat"`
+	// The log group the function sends logs to.
+	//
+	// By default, Lambda functions send logs to an automatically created default log group named /aws/lambda/\<function name\>.
+	// However you cannot change the properties of this auto-created log group using the AWS CDK, e.g. you cannot set a different log retention.
+	//
+	// Use the `logGroup` property to create a fully customizable LogGroup ahead of time, and instruct the Lambda function to send logs to it.
+	//
+	// Providing a user-controlled log group was rolled out to commercial regions on 2023-11-16.
+	// If you are deploying to another type of region, please check regional availability first.
+	// Default: `/aws/lambda/${this.functionName}` - default log group created by Lambda
+	//
+	// Experimental.
+	LogGroup awslogs.ILogGroup `field:"optional" json:"logGroup" yaml:"logGroup"`
 	// The number of days log events are kept in CloudWatch Logs.
 	//
 	// When updating
 	// this property, unsetting it doesn't remove the log retention policy. To
 	// remove the retention policy, set the value to `INFINITE`.
+	//
+	// This is a legacy API and we strongly recommend you move away from it if you can.
+	// Instead create a fully customizable log group with `logs.LogGroup` and use the `logGroup` property
+	// to instruct the Lambda function to send logs to it.
+	// Migrating from `logRetention` to `logGroup` will cause the name of the log group to change.
+	// Users and code and referencing the name verbatim will have to adjust.
+	//
+	// In AWS CDK code, you can access the log group name directly from the LogGroup construct:
+	// ```ts
+	// import * as logs from 'aws-cdk-lib/aws-logs';
+	//
+	// declare const myLogGroup: logs.LogGroup;
+	// myLogGroup.logGroupName;
+	// ```.
 	// Default: logs.RetentionDays.INFINITE
 	//
 	// Experimental.
@@ -180,11 +225,17 @@ type CalendarSetupFunctionProps struct {
 	// When log retention is specified, a custom resource attempts to create the CloudWatch log group.
 	//
 	// These options control the retry policy when interacting with CloudWatch APIs.
+	//
+	// This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+	// `logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
 	// Default: - Default AWS SDK retry options.
 	//
 	// Experimental.
 	LogRetentionRetryOptions *awslambda.LogRetentionRetryOptions `field:"optional" json:"logRetentionRetryOptions" yaml:"logRetentionRetryOptions"`
 	// The IAM role for the Lambda function associated with the custom resource that sets the retention policy.
+	//
+	// This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+	// `logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
 	// Default: - A new role is created.
 	//
 	// Experimental.
@@ -198,6 +249,13 @@ type CalendarSetupFunctionProps struct {
 	//
 	// Experimental.
 	MemorySize *float64 `field:"optional" json:"memorySize" yaml:"memorySize"`
+	// Specify the configuration of Parameters and Secrets Extension.
+	// See: https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html
+	//
+	// Default: - No Parameters and Secrets Extension.
+	//
+	// Experimental.
+	ParamsAndSecrets awslambda.ParamsAndSecretsLayerVersion `field:"optional" json:"paramsAndSecrets" yaml:"paramsAndSecrets"`
 	// Enable profiling.
 	// See: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html
 	//
@@ -249,6 +307,18 @@ type CalendarSetupFunctionProps struct {
 	//
 	// Experimental.
 	SecurityGroups *[]awsec2.ISecurityGroup `field:"optional" json:"securityGroups" yaml:"securityGroups"`
+	// Enable SnapStart for Lambda Function.
+	//
+	// SnapStart is currently supported only for Java 11, 17 runtime.
+	// Default: - No snapstart.
+	//
+	// Experimental.
+	SnapStart awslambda.SnapStartConf `field:"optional" json:"snapStart" yaml:"snapStart"`
+	// Sets the system log level for the function.
+	// Default: "INFO".
+	//
+	// Experimental.
+	SystemLogLevel *string `field:"optional" json:"systemLogLevel" yaml:"systemLogLevel"`
 	// The function execution time (in seconds) after which Lambda terminates the function.
 	//
 	// Because the execution time affects cost, set this value

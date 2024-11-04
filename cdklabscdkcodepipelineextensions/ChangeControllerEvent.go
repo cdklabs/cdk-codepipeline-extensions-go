@@ -10,7 +10,7 @@ type ChangeControllerEvent struct {
 	// The name of the pipeline the Change Controller will be added to.
 	// Experimental.
 	PipelineName *string `field:"required" json:"pipelineName" yaml:"pipelineName"`
-	// The terms in alarm descriptions to seach for to determine if alarms should be checked.
+	// The terms in alarm descriptions to search for to determine if alarms should be checked.
 	//
 	// If any of the alarms matching these search terms are in ALARM state, the stage transition will be closed.
 	// Experimental.

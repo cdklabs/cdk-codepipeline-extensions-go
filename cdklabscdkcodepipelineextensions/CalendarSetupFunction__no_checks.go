@@ -56,6 +56,10 @@ func (c *jsiiProxy_CalendarSetupFunction) validateGrantInvokeParameters(grantee 
 	return nil
 }
 
+func (c *jsiiProxy_CalendarSetupFunction) validateGrantInvokeCompositePrincipalParameters(compositePrincipal awsiam.CompositePrincipal) error {
+	return nil
+}
+
 func (c *jsiiProxy_CalendarSetupFunction) validateGrantInvokeUrlParameters(grantee awsiam.IGrantable) error {
 	return nil
 }

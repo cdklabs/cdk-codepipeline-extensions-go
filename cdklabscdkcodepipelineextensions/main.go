@@ -1,4 +1,4 @@
-// This project is for use in the workshop DOP 401: Get better at building AWS CDK constructs.
+// This project is for use in the workshop DOP 402: Get better at building AWS CDK constructs
 package cdklabscdkcodepipelineextensions
 
 import (
@@ -8,19 +8,6 @@ import (
 )
 
 func init() {
-	_jsii_.RegisterStruct(
-		"@cdklabs/cdk-codepipeline-extensions.AggregateAlarmState",
-		reflect.TypeOf((*AggregateAlarmState)(nil)).Elem(),
-	)
-	_jsii_.RegisterEnum(
-		"@cdklabs/cdk-codepipeline-extensions.AlarmState",
-		reflect.TypeOf((*AlarmState)(nil)).Elem(),
-		map[string]interface{}{
-			"OK": AlarmState_OK,
-			"ALARM": AlarmState_ALARM,
-			"INSUFFICIENT_DATA": AlarmState_INSUFFICIENT_DATA,
-		},
-	)
 	_jsii_.RegisterClass(
 		"@cdklabs/cdk-codepipeline-extensions.Calendar",
 		reflect.TypeOf((*Calendar)(nil)).Elem(),
@@ -64,6 +51,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "getResourceArnAttribute", GoMethod: "GetResourceArnAttribute"},
 			_jsii_.MemberMethod{JsiiMethod: "getResourceNameAttribute", GoMethod: "GetResourceNameAttribute"},
 			_jsii_.MemberMethod{JsiiMethod: "grantInvoke", GoMethod: "GrantInvoke"},
+			_jsii_.MemberMethod{JsiiMethod: "grantInvokeCompositePrincipal", GoMethod: "GrantInvokeCompositePrincipal"},
 			_jsii_.MemberMethod{JsiiMethod: "grantInvokeUrl", GoMethod: "GrantInvokeUrl"},
 			_jsii_.MemberProperty{JsiiProperty: "grantPrincipal", GoGetter: "GrantPrincipal"},
 			_jsii_.MemberMethod{JsiiMethod: "invalidateVersionBasedOn", GoMethod: "InvalidateVersionBasedOn"},
@@ -149,6 +137,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "getResourceArnAttribute", GoMethod: "GetResourceArnAttribute"},
 			_jsii_.MemberMethod{JsiiMethod: "getResourceNameAttribute", GoMethod: "GetResourceNameAttribute"},
 			_jsii_.MemberMethod{JsiiMethod: "grantInvoke", GoMethod: "GrantInvoke"},
+			_jsii_.MemberMethod{JsiiMethod: "grantInvokeCompositePrincipal", GoMethod: "GrantInvokeCompositePrincipal"},
 			_jsii_.MemberMethod{JsiiMethod: "grantInvokeUrl", GoMethod: "GrantInvokeUrl"},
 			_jsii_.MemberProperty{JsiiProperty: "grantPrincipal", GoGetter: "GrantPrincipal"},
 			_jsii_.MemberMethod{JsiiMethod: "invalidateVersionBasedOn", GoMethod: "InvalidateVersionBasedOn"},
@@ -184,23 +173,6 @@ func init() {
 	_jsii_.RegisterStruct(
 		"@cdklabs/cdk-codepipeline-extensions.ChangeControllerProps",
 		reflect.TypeOf((*ChangeControllerProps)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
-		"@cdklabs/cdk-codepipeline-extensions.GetAlarmStateOptions",
-		reflect.TypeOf((*GetAlarmStateOptions)(nil)).Elem(),
-	)
-	_jsii_.RegisterInterface(
-		"@cdklabs/cdk-codepipeline-extensions.IAlarmDetail",
-		reflect.TypeOf((*IAlarmDetail)(nil)).Elem(),
-		[]_jsii_.Member{
-			_jsii_.MemberProperty{JsiiProperty: "alarmArn", GoGetter: "AlarmArn"},
-			_jsii_.MemberProperty{JsiiProperty: "alarmDescription", GoGetter: "AlarmDescription"},
-			_jsii_.MemberProperty{JsiiProperty: "reason", GoGetter: "Reason"},
-			_jsii_.MemberProperty{JsiiProperty: "state", GoGetter: "State"},
-		},
-		func() interface{} {
-			return &jsiiProxy_IAlarmDetail{}
-		},
 	)
 	_jsii_.RegisterStruct(
 		"@cdklabs/cdk-codepipeline-extensions.LocalPathOptions",
